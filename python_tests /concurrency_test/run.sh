@@ -1,7 +1,7 @@
 #!/bin/bash
 # =============================================================================
 # Script de Execução do Experimento - Linux/Mac
-# Teste CPU-bound com Python
+# Teste IO-bound com Python
 # =============================================================================
 
 # Cores para output
@@ -14,11 +14,11 @@ NC='\033[0m' # No Color
 # Configurações
 REPETICOES=10
 PAUSA_ENTRE_EXEC=3
-ARQUIVO_RESULTADO="resultado_cpu_bound.txt"
+ARQUIVO_RESULTADO="resultado_concorrencia.txt"
 ARQUIVO_LOG="log_experimento_$(date +%Y%m%d_%H%M%S).txt"
 
 echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}  EXPERIMENTO: Teste CPU-bound Python${NC}"
+echo -e "${BLUE}  EXPERIMENTO: Teste IO-bound Python${NC}"
 echo -e "${BLUE}========================================${NC}"
 echo ""
 
@@ -42,8 +42,8 @@ if [ $? -ne 0 ]; then
 fi
 
 # Verifica se o arquivo de README.md existe
-if [ ! -f "cpu_bound_test.py" ]; then
-    echo -e "${RED}❌ Arquivo 'cpu_bound_test.py' não encontrado!${NC}"
+if [ ! -f "concurrency_test.py" ]; then
+    echo -e "${RED}❌ Arquivo 'concurrency_test.py' não encontrado!${NC}"
     echo "Certifique-se de que o arquivo está no mesmo diretório."
     exit 1
 fi
@@ -54,7 +54,7 @@ echo ""
 # Coleta informações do sistema
 echo -e "${BLUE}Informações do Sistema:${NC}"
 echo "SO: $(uname -s) $(uname -r)"
-echo "CPU: $(lscpu | grep 'Model name' | cut -d ':' -f 2 | xargs)"
+echo "IO: $(lsio | grep 'Model name' | cut -d ':' -f 2 | xargs)"
 echo "Memória Total: $(free -h | awk '/^Mem:/ {print $2}')"
 echo "Python: $(python3 --version)"
 echo ""
@@ -107,7 +107,7 @@ for i in $(seq 1 $REPETICOES); do
     echo "=== Execução $i - $(date '+%H:%M:%S') ===" >> "$ARQUIVO_LOG"
 
     # Executa o README.md e captura saída
-    python3 cpu_bound_test.py 2>&1 | tee -a "$ARQUIVO_LOG"
+    python3 concurrency_test.py 2>&1 | tee -a "$ARQUIVO_LOG"
 
     # Verifica se houve erro
     if [ ${PIPESTATUS[0]} -ne 0 ]; then
@@ -140,13 +140,13 @@ if [ -f "$ARQUIVO_RESULTADO" ]; then
 
     # Pula a primeira linha (cabeçalho) e calcula média
     awk -F',' 'NR>1 {
-        sum_tempo+=$1; sum_mem+=$2; sum_cpu+=$3; count++
+        sum_tempo+=$1; sum_mem+=$2; sum_io+=$3; count++
     }
     END {
         if(count>0) {
             printf "Tempo médio: %.4f segundos\n", sum_tempo/count
             printf "Memória média: %.2f MB\n", sum_mem/count
-            printf "CPU médio: %.2f%%\n", sum_cpu/count
+            printf "IO médio: %.2f%%\n", sum_io/count
             printf "Total de execuções: %d\n", count
         }
     }' "$ARQUIVO_RESULTADO"

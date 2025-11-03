@@ -72,7 +72,7 @@ def main():
     print(f"CPU: {psutil.cpu_count(logical=False)} cores físicos, {psutil.cpu_count()} threads")
     print("=" * 60)
 
-    # Parâmetros do teste - AUMENTADO para teste mais longo
+    # Parâmetros do README.md - AUMENTADO para README.md mais longo
     LIMIT = 500000  # Calcula primos até 500.000 (mais demorado)
 
     # Memória inicial

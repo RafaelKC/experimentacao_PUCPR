@@ -1,16 +1,16 @@
 # =============================================================================
 # Script de Execução do Experimento - Windows PowerShell
-# Teste CPU-bound com Python
+# Teste IO-bound com Python
 # =============================================================================
 
 # Configurações
 $REPETICOES = 10
 $PAUSA_ENTRE_EXEC = 3
-$ARQUIVO_RESULTADO = "resultado_cpu_bound.txt"
+$ARQUIVO_RESULTADO = "resultado_concorrencia.txt"
 $ARQUIVO_LOG = "log_experimento_$(Get-Date -Format 'yyyyMMdd_HHmmss').txt"
 
 Write-Host "========================================" -ForegroundColor Blue
-Write-Host "  EXPERIMENTO: Teste CPU-bound Python" -ForegroundColor Blue
+Write-Host "  EXPERIMENTO: Teste IO-bound Python" -ForegroundColor Blue
 Write-Host "========================================" -ForegroundColor Blue
 Write-Host ""
 
@@ -42,8 +42,8 @@ try {
 }
 
 # Verifica se o arquivo de README.md existe
-if (-not (Test-Path "cpu_bound_test.py")) {
-    Write-Host "❌ Arquivo 'cpu_bound_test.py' não encontrado!" -ForegroundColor Red
+if (-not (Test-Path "io_bound_test.py")) {
+    Write-Host "❌ Arquivo 'io_bound_test.py' não encontrado!" -ForegroundColor Red
     Write-Host "Certifique-se de que o arquivo está no mesmo diretório."
     exit 1
 }
@@ -53,7 +53,7 @@ Write-Host ""
 # Coleta informações do sistema
 Write-Host "Informações do Sistema:" -ForegroundColor Blue
 Write-Host "SO: Windows $([System.Environment]::OSVersion.Version)"
-Write-Host "CPU: $((Get-WmiObject Win32_Processor).Name)"
+Write-Host "IO: $((Get-WmiObject Win32_Processor).Name)"
 Write-Host "Memória Total: $([math]::Round((Get-WmiObject Win32_ComputerSystem).TotalPhysicalMemory/1GB, 2)) GB"
 Write-Host "Python: $pythonVersion"
 Write-Host ""
@@ -71,7 +71,7 @@ if (Test-Path $ARQUIVO_RESULTADO) {
 
 # Cria cabeçalho do arquivo de resultados se não existir
 if (-not (Test-Path $ARQUIVO_RESULTADO)) {
-    "tempo_segundos,memoria_mb,cpu_percent" | Out-File -FilePath $ARQUIVO_RESULTADO -Encoding UTF8
+    "tempo_segundos,memoria_mb,io_percent" | Out-File -FilePath $ARQUIVO_RESULTADO -Encoding UTF8
 }
 
 # Prepara o ambiente
@@ -106,7 +106,7 @@ for ($i = 1; $i -le $REPETICOES; $i++) {
     "=== Execução $i - $(Get-Date -Format 'HH:mm:ss') ===" | Out-File -FilePath $ARQUIVO_LOG -Append -Encoding UTF8
 
     # Executa o README.md e captura saída
-    $output = python cpu_bound_test.py 2>&1 | Out-String
+    $output = python concurrency_test.py 2>&1 | Out-String
     Write-Host $output
     $output | Out-File -FilePath $ARQUIVO_LOG -Append -Encoding UTF8
 
@@ -143,11 +143,11 @@ if (Test-Path $ARQUIVO_RESULTADO) {
     $dados = Import-Csv $ARQUIVO_RESULTADO
     $tempoMedio = ($dados.tempo_segundos | Measure-Object -Average).Average
     $memoriaMedio = ($dados.memoria_mb | Measure-Object -Average).Average
-    $cpuMedio = ($dados.cpu_percent | Measure-Object -Average).Average
+    $ioMedio = ($dados.io_percent | Measure-Object -Average).Average
 
     Write-Host "Tempo médio: $([math]::Round($tempoMedio, 4)) segundos"
     Write-Host "Memória média: $([math]::Round($memoriaMedio, 2)) MB"
-    Write-Host "CPU médio: $([math]::Round($cpuMedio, 2))%"
+    Write-Host "IO médio: $([math]::Round($ioMedio, 2))%"
     Write-Host "Total de execuções: $($dados.Count)"
     Write-Host ""
 }
