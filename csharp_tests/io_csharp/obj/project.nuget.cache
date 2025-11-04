@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "zFTS/jpKjds=",
+  "success": true,
+  "projectFilePath": "/home/rafaelchicovis/git/experimentacao_PUCPR/csharp_tests/io_csharp/io_csharp.csproj",
+  "expectedPackageFiles": [
+    "/home/rafaelchicovis/.nuget/packages/microsoft.net.illink.tasks/9.0.10/microsoft.net.illink.tasks.9.0.10.nupkg.sha512",
+    "/home/rafaelchicovis/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/9.0.10/microsoft.netcore.app.runtime.linux-x64.9.0.10.nupkg.sha512",
+    "/home/rafaelchicovis/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/9.0.10/microsoft.aspnetcore.app.runtime.linux-x64.9.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}

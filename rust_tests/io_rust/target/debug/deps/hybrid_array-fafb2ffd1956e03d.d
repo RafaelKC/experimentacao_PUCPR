@@ -1,0 +1,10 @@
+/home/rafaelchicovis/git/experimentacao_PUCPR/rust_tests/io_rust/target/debug/deps/hybrid_array-fafb2ffd1956e03d.d: /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/lib.rs /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/sizes.rs /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/from_fn.rs /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/iter.rs /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/traits.rs /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/../README.md
+
+/home/rafaelchicovis/git/experimentacao_PUCPR/rust_tests/io_rust/target/debug/deps/libhybrid_array-fafb2ffd1956e03d.rmeta: /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/lib.rs /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/sizes.rs /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/from_fn.rs /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/iter.rs /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/traits.rs /home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/../README.md
+
+/home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/lib.rs:
+/home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/sizes.rs:
+/home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/from_fn.rs:
+/home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/iter.rs:
+/home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/traits.rs:
+/home/rafaelchicovis/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/hybrid-array-0.4.5/src/../README.md:

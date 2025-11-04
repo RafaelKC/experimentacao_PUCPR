@@ -1,0 +1,2 @@
+/home/rafaelchicovis/git/experimentacao_PUCPR/csharp_tests/io_csharp/publish_linux/io_csharp.pdb
+/home/rafaelchicovis/git/experimentacao_PUCPR/csharp_tests/io_csharp/publish_linux/io_csharp

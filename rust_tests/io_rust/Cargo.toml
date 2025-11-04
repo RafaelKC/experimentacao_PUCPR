@@ -1,0 +1,9 @@
+[package]
+name = "io_rust"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+sysinfo = "0.30" # Usamos a mesma versão
+sha2 = "0.10" # Necessário para o processamento de hash
+hex = "0.4"
